@@ -9,6 +9,8 @@ from .grabbed_image import GrabbedImage
 from .grab_settings import *
 from utils.utils import StringUtil
 
+from pyvirtualdisplay import Display
+
 
 class GoogleGrabber(AbstractGrabber):
     """Grab images from google search"""
@@ -23,6 +25,9 @@ class GoogleGrabber(AbstractGrabber):
         query = keyword.split()
         query = '+'.join(query)
         url = self.GOOGLE_URL % query
+
+        display = Display(visible=0, size=(800, 600))
+        display.start()
 
         print('> searching image on Google : ' + url)
 
