@@ -9,6 +9,8 @@ from .abstract_grabber import AbstractGrabber
 from .grabbed_image import GrabbedImage
 from utils.utils import StringUtil
 
+from pyvirtualdisplay import Display
+
 
 class BingGrabber(AbstractGrabber):
     """Grab images from google search"""
@@ -23,6 +25,9 @@ class BingGrabber(AbstractGrabber):
         query = keyword.split()
         query = '+'.join(query)
         url = self.BING_URL % query
+        
+        display = Display(visible=0, size=(800, 600))
+        display.start()
 
         print('> searching image on Bing : ' + url)
 
